@@ -20,7 +20,10 @@
     "koa-static": "^5.0.0",
     "koa-views": "^6.2.0",
     "mysql2": "^2.3.3",
-    "pug": "^2.0.3"
+    "pug": "^2.0.3",
+    "require-all": "^3.0.0",
+    "sequelize": "^6.21.4",
+    "simple-git": "^3.13.0"
   },
   "devDependencies": {
     "nodemon": "^1.19.1"

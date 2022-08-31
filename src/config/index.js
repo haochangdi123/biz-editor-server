@@ -1,5 +1,5 @@
 /**
- * 链接 mysql 数据库
+ * 连接 mysql 数据库
  */
 module.exports = {
   mysqlConf: {
