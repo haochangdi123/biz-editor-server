@@ -2,6 +2,7 @@ const router = require('koa-router')()
 const {ENV} = require('../utils/env')
 const packageInfo = require('../../package.json')
 const testMysqlConn = require('../db/mysql2')
+const { WorksModel } = require('../models/WorksModel')
 
 // router.get('/', async (ctx, next) => {
 //   await ctx.render('index', {
@@ -20,8 +21,17 @@ const testMysqlConn = require('../db/mysql2')
 // })
 
 
-// 测试数据库连接
-router.get('/api/db-check', async ctx => {
+
+
+
+/**
+ * 注意： 测试时先要打开数据库
+ */
+
+
+
+// 测试数据库mysql连接
+router.get('/api/db-check-mysql', async ctx => {
   // 测试 mysql连接
   const mysqlRes = await testMysqlConn()
 
@@ -32,6 +42,52 @@ router.get('/api/db-check', async ctx => {
       version: packageInfo.version,
       ENV,
       mysqlConn: mysqlRes.length > 0 // true 为连接成功
+    }
+  };
+})
+
+
+// 测试 mongodb 连接
+router.get('/api/db-check-mongodb', async ctx => {
+  let mongodbConn
+  try {
+      mongodbConn = true
+      await WorksModel.findOne()
+  } catch (ex) {
+    mongodbConn = false
+  }
+
+  ctx.body = {
+    errno: 0,
+    data: {
+      name: 'biz editor server',
+      version: packageInfo.version,
+      ENV,
+      mongodbConn
+    }
+  };
+})
+
+// 测试数据库连接
+router.get('/api/db-check', async ctx => {
+  let mongodbConn
+  try {
+      mongodbConn = true
+      await WorksModel.findOne()
+  } catch (ex) {
+    mongodbConn = false
+  }
+
+  const mysqlRes = await testMysqlConn()
+
+  ctx.body = {
+    errno: 0,
+    data: {
+      name: 'biz editor server',
+      version: packageInfo.version,
+      ENV,
+      mysqlConn: mysqlRes.length > 0, // true 为连接成功
+      mongodbConn
     }
   };
 })
