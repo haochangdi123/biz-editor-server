@@ -6,7 +6,8 @@
     "start": "node bin/www",
     "dev": "./node_modules/.bin/nodemon bin/www",
     "prd": "pm2 start bin/www",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "tree": "tree -I 'node_modules|test*|LICENSE|README.en.md' > TREE.md"
   },
   "dependencies": {
     "debug": "^4.1.1",
@@ -19,9 +20,10 @@
     "koa-router": "^7.4.0",
     "koa-static": "^5.0.0",
     "koa-views": "^6.2.0",
-    "mongoose": "^5.10.4",
+    "mongoose": "^5.13.15",
     "mysql2": "^2.3.3",
     "pug": "^2.0.3",
+    "redis": "^3.1.2",
     "require-all": "^3.0.0",
     "sequelize": "^6.21.4",
     "simple-git": "^3.13.0"

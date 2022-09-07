@@ -3,6 +3,7 @@ const {ENV} = require('../utils/env')
 const packageInfo = require('../../package.json')
 const testMysqlConn = require('../db/mysql2')
 const { WorksModel } = require('../models/WorksModel')
+const { cacheGet, cacheSet } = require('../cache/index')
 
 // router.get('/', async (ctx, next) => {
 //   await ctx.render('index', {
@@ -48,6 +49,7 @@ router.get('/api/db-check-mysql', async ctx => {
 
 
 // 测试 mongodb 连接
+// http://localhost:3000/api/db-check-mongodb
 router.get('/api/db-check-mongodb', async ctx => {
   let mongodbConn
   try {
@@ -68,6 +70,23 @@ router.get('/api/db-check-mongodb', async ctx => {
   };
 })
 
+// 测试 redis 连接
+// http://localhost:3000/api/db-check-redis
+router.get('/api/db-check-redis', async ctx => {
+  cacheSet('name', 'this is redis server')
+  const redisTestVal = await cacheGet('name')
+
+  ctx.body = {
+    errno: 0,
+    data: {
+      name: 'biz editor server',
+      version: packageInfo.version,
+      ENV,
+      redisConn: redisTestVal!= null
+    }
+  };
+})
+
 // 测试数据库连接
 router.get('/api/db-check', async ctx => {
   let mongodbConn
@@ -80,6 +99,10 @@ router.get('/api/db-check', async ctx => {
 
   const mysqlRes = await testMysqlConn()
 
+
+  cacheSet('name', 'this is redis server')
+  const redisTestVal = await cacheGet('name')
+
   ctx.body = {
     errno: 0,
     data: {
@@ -87,7 +110,8 @@ router.get('/api/db-check', async ctx => {
       version: packageInfo.version,
       ENV,
       mysqlConn: mysqlRes.length > 0, // true 为连接成功
-      mongodbConn
+      mongodbConn,
+      redisConn: redisTestVal!= null
     }
   };
 })
