@@ -32,6 +32,7 @@ const { cacheGet, cacheSet } = require('../cache/index')
 
 
 // 测试数据库mysql连接
+// http://localhost:3000/api/db-check-mysql
 router.get('/api/db-check-mysql', async ctx => {
   // 测试 mysql连接
   const mysqlRes = await testMysqlConn()
@@ -88,6 +89,7 @@ router.get('/api/db-check-redis', async ctx => {
 })
 
 // 测试数据库连接
+// http://localhost:3000/api/db-check
 router.get('/api/db-check', async ctx => {
   let mongodbConn
   try {
