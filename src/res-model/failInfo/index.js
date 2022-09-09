@@ -2,7 +2,6 @@
  * @description res 错误信息配置
  */
 
-
 const errorInfos = require('./error')
 const validateInfos = require('./validate')
 const usersInfos = require('./users')

@@ -3,12 +3,12 @@
  * 参考 https://github.com/demopark/sequelize-docs-Zh-CN/blob/master/data-types.md
  */
 
-const Sequelize = require('sequelize');
+const Sequelize = require('sequelize')
 
 module.exports = {
-  STRING: Sequelize.STRING, // VARCHAR(255)
-  TEXT: Sequelize.TEXT, // TEXT
-  INTEGER: Sequelize.INTEGER,
-  BOOLEAN: Sequelize.BOOLEAN,
-  DATE: Sequelize.DATE,
-};
+    STRING: Sequelize.STRING, // VARCHAR(255)
+    TEXT: Sequelize.TEXT, // TEXT
+    INTEGER: Sequelize.INTEGER,
+    BOOLEAN: Sequelize.BOOLEAN,
+    DATE: Sequelize.DATE,
+}
