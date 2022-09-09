@@ -1,8 +1,19 @@
 .
 ├── README.md
 ├── TREE.md
+├── __test__
+│   ├── apis
+│   │   ├── _server.js
+│   │   └── db-check.js
+│   ├── demo.test.js
+│   └── index.test.js
 ├── bin
+│   ├── pm2-prd-dev.config.js
+│   ├── pm2AppConf.js
 │   └── www
+├── logs
+│   ├── err.log
+│   └── out.log
 ├── package-lock.json
 ├── package.json
 ├── src
@@ -10,6 +21,7 @@
 │   ├── cache
 │   │   └── index.js
 │   ├── config
+│   │   ├── constant.js
 │   │   ├── envs
 │   │   │   └── dev.js
 │   │   └── index.js
@@ -23,17 +35,32 @@
 │   │       └── utils
 │   │           ├── conn-test.js
 │   │           └── sync-alert.js
+│   ├── middlewares
+│   │   ├── jwt.js
+│   │   └── loginCheck.js
 │   ├── models
 │   │   ├── UserModel.js
 │   │   └── WorksModel.js
 │   ├── public
 │   │   └── stylesheets
 │   │       └── style.css
+│   ├── res-model
+│   │   ├── README.md
+│   │   ├── failInfo
+│   │   │   ├── channel.js
+│   │   │   ├── error.js
+│   │   │   ├── index.js
+│   │   │   ├── users.js
+│   │   │   ├── utils.js
+│   │   │   ├── validate.js
+│   │   │   └── works.js
+│   │   └── index.js
 │   ├── routes
 │   │   ├── index.js
 │   │   └── users.js
 │   ├── utils
-│   │   └── env.js
+│   │   ├── env.js
+│   │   └── jwt.js
 │   └── views
 │       ├── error.pug
 │       ├── index.pug
@@ -41,4 +68,4 @@
 ├── yarn-error.log
 └── yarn.lock
 
-14 directories, 27 files
+20 directories, 48 files
