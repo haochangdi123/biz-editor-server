@@ -3,4 +3,4 @@
  * 按顺序挨个测试
  */
 
-require()
+require('./apis/db-check')
