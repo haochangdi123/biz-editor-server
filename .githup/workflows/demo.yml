@@ -1,6 +1,7 @@
 # 更多介绍 : https://help.github.com/actions/language-and-framework-guides/using-nodejs-with-github-actions
 # github actions 中文文档 https://docs.github.com/cn/actions/getting-started-with-github-actions
 # githup action 的demo
+# 可以在githup 项目主页的actions 下查看
 
 name: demo
 
@@ -40,4 +41,4 @@ jobs:
           steps:
             - run: touch a.txt
             - run: echo 100 > a.txt
-            - run: car a.txt
+            - run: cat a.txt
