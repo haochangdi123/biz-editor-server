@@ -1,0 +1,41 @@
+# 更多介绍 : https://help.github.com/actions/language-and-framework-guides/using-nodejs-with-github-actions
+# github actions 中文文档 https://docs.github.com/cn/actions/getting-started-with-github-actions
+# githup action 的demo
+
+name: demo
+
+# 监听
+on:
+    push:
+        # 触发的分支
+        branches:
+            - dev-2-1-githupAction
+        # 触发的文件
+        paths:
+            - '.github/workflows/**'
+            - '__test__/**'
+            - 'src/**'
+
+jobs:
+    test:
+        # 运行的操作系统，ubuntu-latest为默认
+        runs-on: ubuntu-latest
+
+        steps:
+            - uses: actions/checkout@v2   # 第三方actions，帮助我们先 git pull
+            - name: Use Node.js           # 第三方actions，使用并安装 Node.js
+              uses: actions/setup-node@v1
+              with:
+                  node-version: 14
+            - name: print node version    # 输出 node 版本， run 我们的命令
+              run: |
+                  node -v
+                  npm -v
+                  echo 'hello githup action'
+            - name: test                # 测试 创建a.txt； a.txt写入100； 输出a.txt
+              run: |
+                  touch a.txt
+                  echo 100 > a.txt
+                  car a.txt
+                   
+            
