@@ -3,7 +3,7 @@
 # githup action 的demo
 # 可以在githup 项目主页的actions 下查看
 
-name: demo
+name: actionDemo
 
 # 监听
 on:
