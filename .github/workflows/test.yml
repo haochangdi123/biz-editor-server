@@ -9,7 +9,7 @@ on:
     push:
         # 触发的分支
         branches:
-            - dev-2-1-githupAction
+            - main
         # 触发的文件
         paths:
             - '.github/workflows/**'
