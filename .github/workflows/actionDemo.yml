@@ -16,29 +16,28 @@ on:
             - '.github/workflows/**'
             - '__test__/**'
             - 'src/**'
-
 jobs:
-    test:
-        # 运行的操作系统，ubuntu-latest为默认
-        runs-on: ubuntu-latest
+      test:
+          # 运行的操作系统，ubuntu-latest为默认
+          runs-on: ubuntu-latest
 
-        steps:
-            - uses: actions/checkout@v2   # 第三方actions，帮助我们先 git pull
-            - name: Use Node.js           # 第三方actions，使用并安装 Node.js
-              uses: actions/setup-node@v1
-              with:
-                  node-version: 14
-            - name: print node version    # 输出 node 版本， run 我们的命令
-              run: |
-                  node -v
-                  npm -v
-                  echo 'hello githup action'
+          steps:
+              - uses: actions/checkout@v2   # 第三方actions，帮助我们先 git pull
+              - name: Use Node.js           # 第三方actions，使用并安装 Node.js
+                uses: actions/setup-node@v1
+                with:
+                    node-version: 14
+              - name: print node version    # 输出 node 版本， run 我们的命令
+                run: |
+                    node -v
+                    npm -v
+                    echo 'hello githup action'
 
 
       test2:
           runs-on: ubuntu-latest
           # 测试 创建a.txt； a.txt写入100； 输出a.txt
           steps:
-            - run: touch a.txt
-            - run: echo 100 > a.txt
-            - run: cat a.txt
+              - run: touch a.txt
+              - run: echo 100 > a.txt
+              - run: cat a.txt
