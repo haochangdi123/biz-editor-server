@@ -1,0 +1,29 @@
+name: test
+
+# 监听
+on:
+    push:
+        # 触发的分支
+        branches:
+            - dev-2-1-githupAction # 注意，正式上线需要将该分支改为master，因为只有master需要提交后自动化远程测试
+        # 触发的文件
+        paths:
+            - '.github/workflows/**'
+            - '__test__/**'
+            - 'src/**'
+jobs:
+      test:
+          # 运行的操作系统，ubuntu-latest为默认
+          runs-on: ubuntu-latest
+
+          steps:
+              - uses: actions/checkout@v2   # 第三方actions，帮助我们先 git pull
+              - name: Use Node.js           # 第三方actions，使用并安装 Node.js
+                uses: actions/setup-node@v1
+                with:
+                    node-version: 14
+              - name: lint and test
+                run: 
+                    npm i
+                    npm run lint
+                    npm run test:remote  # 执行自动化测试，test:remote 为执行远程测试，连接的是远程的数据库
